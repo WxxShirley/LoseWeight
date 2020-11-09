@@ -1,4 +1,5 @@
 # LoseWeight
+https://img.shields.io/github/pipenv/locked/dependency-version/WxxShirley/LoseWeight/dev/flutter?style=plastic 
 🏃‍♀️ 减肥健身打卡app
 
 ## 进度
