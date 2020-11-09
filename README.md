@@ -2,7 +2,7 @@
 🏃‍♀️ 减肥健身打卡app
 
 ## 进度
- - [x] 打卡与主页原型设计完成
+ - [x] 11.9 打卡与主页原型设计完成
 
 ## 功能
 * 设定打卡任务并完成，相应本地消息推送提醒、完成后勋章奖励
@@ -11,6 +11,10 @@
 * 个性化报告
 
 ## 运行截图
+
+ Screenshot1 | Screenshot2 | Screenshot3 
+ -|-|-
+ ![sh1](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG177.png)|![sh2](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG178.png)|![sh3](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG179.png)
 
 
 ## 文件说明
