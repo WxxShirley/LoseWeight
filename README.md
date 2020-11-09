@@ -1,5 +1,8 @@
 # LoseWeight
-![build-env](https://img.shields.io/badge/ENV-flutter-brightgreen)
+![build-env](https://img.shields.io/badge/flutter-1.22.3-brightgreen)
+![progress](http://progressed.io/bar/10?title=progress)
+
+###
 🏃‍♀️ 减肥健身打卡app
 
 ## 进度
@@ -18,32 +21,18 @@
  ![sh1](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG177.png)|![sh2](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG178.png)|![sh3](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG179.png)
 
 
-## 文件说明
+## `lib`文件说明
 ```
 ├── components       抽象出的组件
-│   ├── clockinItem.dart       // 一个打卡条目
-│   ├── customizedToast.dart   // 好看的toast
-│   ├── diet.dart              // 展示一顿餐
-│   ├── returnButton.dart     
-│   └── todayCard.dart  
 ├── global           全局变量
-│   └── iconTheme.dart
 ├── main.dart
 ├── mainPage.dart
 ├── models           抽象类
-│   ├── clockin.dart
-│   ├── iconThemeAttribute.dart
-│   └── meal.dart
 ├── pages            界面页，分别对应每日记录、统计奖励、消息和个人中心
 │   ├── awards
-│   │   └── yearContribution.dart
 │   ├── message
 │   ├── personal
 │   └── record
-│       ├── chooseIconTheme.dart
-│       ├── createTask.dart
-│       └── recordPage.dart
 └── utils            功能函数
-    └── utils.dart
 ```
 
