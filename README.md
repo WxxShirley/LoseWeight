@@ -1,5 +1,5 @@
 # LoseWeight
-![build](https://img.shields.io/github/pipenv/locked/dependency-version/WxxShirley/LoseWeight/dev/flutter?style=plastic)
+![build-env](https://img.shields.io/badge/ENV-flutter-brightgreen)
 🏃‍♀️ 减肥健身打卡app
 
 ## 进度
