@@ -1,6 +1,7 @@
 # LoseWeight
 ![build-env](https://img.shields.io/badge/flutter-1.22.3-brightgreen)
-![progress](http://progressed.io/bar/10?title=progress)
+![progress](https://img.shields.io/badge/progress-10%25-yellowgreen)
+![status](https://img.shields.io/badge/status-ongoing-red)
 
 ###
 🏃‍♀️ 减肥健身打卡app
