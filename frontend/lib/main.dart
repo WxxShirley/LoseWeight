@@ -1,8 +1,18 @@
+//import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:frontend/mainPage.dart';
+//import 'package:web_socket_channel/io.dart';
 
 void main() {
+
+  /* var channel = IOWebSocketChannel.connect("ws://localhost:8000/ws/chat/");
+  channel.sink.add(jsonEncode({"message":"hello world"}));
+  channel.stream.listen((event) {
+    print("message");
+  });*/
+
   runApp(MyApp());
 }
 

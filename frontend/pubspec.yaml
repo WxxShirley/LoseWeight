@@ -28,6 +28,9 @@ dependencies:
   fluttertoast: ^7.1.1  # !!Need android configuration
   animated_background: ^1.0.5
   heatmap_calendar: ^1.2.8
+  web_socket_channel: ^1.1.0
+  dio: ^3.0.10
+  json_serializable: ^3.5.0
   flutter:
     sdk: flutter
   flutter_localizations:

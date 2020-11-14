@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/models/meal.dart';
 import 'package:frontend/utils/utils.dart';

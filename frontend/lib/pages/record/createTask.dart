@@ -1,11 +1,20 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:frontend/components/customizedToast.dart';
 import 'package:frontend/components/returnButton.dart';
+import 'package:frontend/global/host.dart';
+import 'package:frontend/global/iconTheme.dart';
+import 'package:frontend/global/info.dart';
+import 'package:frontend/models/clockRecord.dart';
+import 'package:frontend/models/httpRes.dart';
 import 'package:frontend/pages/record/chooseIconTheme.dart';
 import 'package:date_range_picker/date_range_picker.dart' as DateRangePicker;
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:frontend/utils/utils.dart';
 
 /*
     新建一个打卡记录界面
@@ -54,6 +63,7 @@ class _CreateTask extends State<CreateTask>
   double _freq=1;
   Color _colorTheme = Colors.limeAccent;
   String _showDate;
+  int _iconIndex;
 
   // 表单控制
   TextEditingController _titleController = new TextEditingController();
@@ -132,13 +142,15 @@ class _CreateTask extends State<CreateTask>
                 firstDate: (new DateTime.now()).subtract(new Duration(days:20)),
                 lastDate: (new DateTime.now()).add(new Duration(days:360)),
               );
-              if (picked != null && picked.length == 2) {
+              if (picked != null && picked.length == 2 && picked[1].compareTo(DateTime.now())>0 ) {
                  print(picked);
                  String show = picked[0].toString().substring(0,10) + "至" + picked[1].toString().substring(0,10);
                  setState((){
                    _date = picked;
                    _showDate = show;
                  });
+              }else{
+                showToast(_fToast, Icons.error, "请选择合法时间");
               }
             }
           ),
@@ -166,9 +178,12 @@ class _CreateTask extends State<CreateTask>
              onTap: ()async {
                // 等待前一界面返回结果
                final _icon = await  Navigator.push(context, MaterialPageRoute(builder: (context)=>new IconsPage()));
-               setState(() {
-                 _iconTheme = _icon;
-               });
+               if(_icon>0){
+                 setState(() {
+                   _iconTheme = icons[_icon];
+                   _iconIndex = _icon;
+                 });
+               }
              },
           ),
           Divider(),
@@ -205,16 +220,58 @@ class _CreateTask extends State<CreateTask>
           Container(height: 20.0,),
 
           FloatingActionButton.extended(
-            onPressed: (){
+            onPressed: ()async{
 
 
               print(_titleController.text);
               print(_freq.toString());
               
               if(_titleController.text=="" || _freq.toInt()==0 || _iconTheme==null || _date.length!=2){
-                _showToast();
+                showToast(_fToast,Icons.error, "请检查表单");
               }
 
+             
+              var queryParams = {
+                "mobile":userMobile,
+                "startDate":_date[0].toString().substring(0,10),
+                "endDate":_date[1].toString().substring(0,10),
+                "color": encodeColor(_colorTheme.toString()), //提取color对应的int
+                "icon": _iconIndex, //存储icon对应的index
+                "title": _titleController.text,
+                "freq":_freq.toInt(),
+              };
+              print(queryParams);
+
+              Dio _dio = new Dio();
+              _dio.options.responseType = ResponseType.plain;
+              Response _res = await _dio.get(myHost+"/clockin/create",queryParameters: queryParams,options: Options(headers: {'Authorization':myToken}));
+              
+              HttpRes _httpRes = HttpRes.fromJson(json.decode(_res.data.toString()));
+              // 将新对象传递给前页
+              if(_httpRes.status=='ok'){
+                 showToast(_fToast,Icons.check, "创建成功");
+                 ClockRecord newRecord = ClockRecord(
+                   id:int.parse( _httpRes.type),
+                   title: queryParams["title"],
+                   startDate: queryParams["startDate"],
+                   endDate: queryParams["endDate"],
+                   freq: queryParams["freq"],
+                   icon: queryParams["icon"].toString(),
+                   color: queryParams["color"],
+                   cTime: DateTime.now().toString().substring(0,10),
+                   hasTodayTag: 0,
+                 );
+                 // 如果今天也在打卡日子中
+                 if(_date[0].compareTo(DateTime.now())<=0 && _date[1].compareTo(DateTime.now())>=0){
+                   Navigator.pop(context, newRecord);
+                 }else{
+                   Navigator.pop(context);
+                 }
+                 
+              }else{
+                showToast(_fToast,Icons.error, "创建失败");
+              }
+              
 
             }, 
             backgroundColor: Theme.of(context).primaryColor,
@@ -227,11 +284,11 @@ class _CreateTask extends State<CreateTask>
     ));
   }
 
-  _showToast(){
-    _fToast.showToast(child: CusToast(icon:Icons.error, hintText:"请检查表单"),
+  /*_showToast(IconData icon, String hintText){
+    _fToast.showToast(child: CusToast(icon:icon, hintText:hintText),
       gravity: ToastGravity.BOTTOM,
       toastDuration: Duration(seconds:2),
     );
-  }
+  }*/
 
 }

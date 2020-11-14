@@ -52,6 +52,7 @@ class _IconsPage extends State<IconsPage>
 {
   List<IconThemeAttribute> _icons = new List<IconThemeAttribute>(); 
   IconData selected; 
+  int selectedIndex=-1;
   
   // 当有icon被选中时回调
   sonThemeSelected(int index){
@@ -62,6 +63,7 @@ class _IconsPage extends State<IconsPage>
     setState(() {
       _icons = _icons;
       selected = _icons[index].icon; 
+      selectedIndex = index; 
     });
   }
 
@@ -88,7 +90,7 @@ class _IconsPage extends State<IconsPage>
       appBar: AppBar(title: Text("选择主题"), leading:Text(""),
         actions: [
           FlatButton(child: Text( selected==null?"取消":"确定",style:TextStyle(color: Colors.white)),onPressed: (){
-            Navigator.pop(context, selected);
+            Navigator.pop(context, selectedIndex);
           },)
         ],
       ),

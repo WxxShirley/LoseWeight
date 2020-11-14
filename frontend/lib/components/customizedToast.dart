@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 class CusToast extends StatelessWidget
@@ -26,3 +27,10 @@ class CusToast extends StatelessWidget
     );
   }
 }
+
+showToast(FToast toast, IconData icon, String hintText){
+    toast.showToast(child: CusToast(icon:icon, hintText:hintText),
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds:2),
+    );
+  }
