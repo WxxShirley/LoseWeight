@@ -268,7 +268,9 @@ class _CreateTask extends State<CreateTask>
                    Navigator.pop(context);
                  }
                  
-              }else{
+              }else if(_httpRes.status=='error' && _httpRes.type=='over length'){
+                showToast(_fToast,Icons.error, "超过最多打卡数目限制!");
+              }else {
                 showToast(_fToast,Icons.error, "创建失败");
               }
               

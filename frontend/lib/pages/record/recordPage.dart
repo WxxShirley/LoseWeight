@@ -70,8 +70,10 @@ class _Record extends State<Record>  with TickerProviderStateMixin
     
     setState(() {
       _clocks = _c;
+      totalLen = _clocks.length;
     });
     print(_clocks);
+    print(totalLen);
   }
   
 

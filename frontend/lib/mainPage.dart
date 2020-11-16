@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/awards/yearContribution.dart';
-
+import 'package:frontend/pages/awards/weekView.dart';
+import 'package:frontend/pages/awards/yearView.dart';
 import 'package:frontend/pages/record/recordPage.dart';
 
 
@@ -14,7 +14,7 @@ class _MainPage extends State<MainPage>
 {
   int _selectedIndex = 0;
   List<Widget> _bottomNavPages = List();
-  
+
   void _onItemTapped(int index){
     setState(() {
       _selectedIndex = index;
@@ -24,7 +24,7 @@ class _MainPage extends State<MainPage>
   @override
   void initState(){
     super.initState();
-    _bottomNavPages..add(Record())..add(YearContributionDemo())..add(Text("发现"))..add(Text("个人中心"));
+    _bottomNavPages..add(Record())..add(WeekView())..add(YearView())..add(Text("个人中心"));
   }
 
   @override
@@ -44,7 +44,6 @@ class _MainPage extends State<MainPage>
         unselectedItemColor: Theme.of(context).unselectedWidgetColor,
         selectedLabelStyle: TextStyle(),
         onTap: _onItemTapped,
-        
         
       ),
     );
