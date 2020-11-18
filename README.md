@@ -18,8 +18,8 @@
 主页 | 创建打卡 | 创建打卡2
  -|-|-
  ![sh1](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG177.png)|![sh2](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG178.png)|![sh3](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG179.png)
-周视图 | 周视图2 | 年视图demo
-![sh4](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG189.png) | 待上传 | ![sh6](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG190.png)
+周视图 | 月视图 | 年视图
+![sh4](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG189.png) | TODO | ![sh6](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG194.png)
 
 
 ## `lib`文件说明
