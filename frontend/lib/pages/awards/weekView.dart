@@ -1,11 +1,7 @@
 import 'dart:convert';
-
-import 'package:calendar_strip/calendar_strip.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_rounded_progress_bar/flutter_rounded_progress_bar.dart';
-import 'package:flutter_rounded_progress_bar/rounded_progress_bar_style.dart';
 import 'package:frontend/components/circleBedge.dart';
 import 'package:frontend/components/percentBar.dart';
 import 'package:frontend/global/host.dart';
