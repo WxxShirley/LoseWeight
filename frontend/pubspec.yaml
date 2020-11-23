@@ -38,6 +38,7 @@ dependencies:
       url: https://github.com/mduccc/flutter_calendar_week
       ref: 0.4.1
   bubble_tab_indicator: ^0.1.4
+  flutter_calendar_carousel: ^1.5.1
   flutter:
     sdk: flutter
   flutter_localizations:

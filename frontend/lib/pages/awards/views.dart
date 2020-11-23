@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/pages/awards/monthView.dart';
 // import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:frontend/pages/awards/weekView.dart';
 import 'package:frontend/pages/awards/yearView.dart';
 
+// ignore: must_be_immutable
 class AllViewScreen extends StatefulWidget
 {
   TabController controller;
@@ -27,7 +29,7 @@ class _AllViewScreen extends State<AllViewScreen>
     return 
         TabBarView(
           controller: controller,
-          children: [ WeekView(),Center(child:Text("TODO: 月视图..")), YearView(),],
+          children: [ WeekView(),MonthView(), YearView(),],
     );
   }
  

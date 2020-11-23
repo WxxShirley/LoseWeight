@@ -15,6 +15,7 @@ List<String> _monthsLabels = ['', '','', '', '','','', '','','', '','',];
 
 
 // 年视图抽象模版
+
 class YearViewUtil extends StatelessWidget
 {
   Map<DateTime, int> times;
@@ -96,7 +97,7 @@ class _YearView extends State<YearView>
     mps.forEach((key, value) { 
 
       _show.add(new YearViewUtil(
-        times: Map.fromIterable(value, key: (e)=>e, value:(e)=>1),
+        times: Map.fromIterable(value, key: (e)=>TimeUtils.removeTime(e), value:(e)=>1),
         color: mp2color[key],
         title: key,
       ));
@@ -189,45 +190,7 @@ class YearView extends StatelessWidget
             labelTextColor: Colors.blueGrey,
             dayTextColor: Colors.blue[500],
           ),
-      
-      Container(height: 30.0,),
-      
-            HeatMapCalendar(
-        input: {
-          TimeUtils.removeTime(DateTime.now().subtract(Duration(days: 270))): 50,
-          TimeUtils.removeTime(DateTime.now().subtract(Duration(days: 130))): 50,
-          TimeUtils.removeTime(DateTime.now().subtract(Duration(days: 110))): 50,
-          TimeUtils.removeTime(DateTime.now()): 5,
-        },
-        colorThresholds: {
-            1: Colors.pink[100],
-            10: Colors.pink[300],
-            30: Colors.pink[500]
-        },
-        weekDaysLabels:  ['', '', '', '', '', '', ''],
-        monthsLabels: 
-            [
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-            ],
-
-            squareSize: 6.0,
-            textOpacity: 0.3,
-            labelTextColor: Colors.blueGrey,
-            dayTextColor: Colors.blue[500],
-          ),
-
+   
 
     ],);
   }
