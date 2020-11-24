@@ -15,11 +15,11 @@
 
 ## 运行截图
 
-主页 | 创建打卡 | 创建打卡2
- -|-|-
- ![sh1](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG177.png)|![sh2](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG178.png)|![sh3](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG179.png)
-周视图 | 月视图 | 年视图
-![sh4](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG189.png) | ![sh5](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG219.png) | ![sh6](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG194.png)
+主页 | 完成打卡 | 创建打卡1 | 创建打卡2
+ -|-|-|-
+ ![sh1](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2231606217806_.pic_hd.jpg)|![sh2](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2211606217791_.pic_hd.jpg)|![sh3](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG179.png) | ![sh4](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2251606217922_.pic_hd.jpg)
+周视图 | 月视图 | 年视图 | 单个打卡记录视图
+![sh5](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2261606217939_.pic_hd.jpg) | ![sh6](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG219.png) | ![sh7](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2271606217951_.pic.jpg) | ![sh8](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2241606217898_.pic_hd.jpg)
 
 
 ## `lib`文件说明
