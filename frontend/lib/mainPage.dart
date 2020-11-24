@@ -1,10 +1,11 @@
+import 'dart:convert';
+
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/components/circleBedge.dart';
 import 'package:frontend/pages/awards/views.dart';
-import 'package:frontend/pages/awards/weekView.dart';
-import 'package:frontend/pages/awards/yearView.dart';
 import 'package:frontend/pages/record/recordPage.dart';
-
+import 'package:web_socket_channel/io.dart';
 
 class MainPage extends StatefulWidget
 {
@@ -29,6 +30,38 @@ class _MainPage extends State<MainPage> with SingleTickerProviderStateMixin
     super.initState();
     _tabController = new  TabController(vsync: this, length: 3);
     _bottomNavPages..add(Record())..add(AllViewScreen(controller: _tabController,))..add(Text("消息"))..add(Text("个人中心"));
+
+    //开启完成本周打卡任务的socket监听
+    var channel = IOWebSocketChannel.connect("ws://127.0.0.1:8000/ws/message/18933928018/");
+    channel.sink.add(jsonEncode({"message":"hello world"}));
+    channel.stream.listen((event) async{
+       print(event);
+       // 已完成打卡的名字
+       String title = event;
+       
+       
+       // 展示对话框提示
+       showDialog(
+         context: context,
+         builder: (BuildContext context){
+           return AlertDialog(
+             title: Text("系统提示"),
+             content: 
+             Column(
+               mainAxisSize: MainAxisSize.min,
+               children: [
+                 Text("恭喜你，完成了本周"+title+"打卡任务!"),
+                 CircleBadge(color:Theme.of(context).primaryColor, title:title, subtitle:"继续努力!")
+               ],
+             ),
+             actions: [
+               FlatButton(child:Text("确定"), onPressed: ()=>{Navigator.of(context).pop()},)
+             ],
+           );
+         }
+       );
+
+    });
   }
 
    @override

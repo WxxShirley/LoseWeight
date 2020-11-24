@@ -6,6 +6,11 @@ import 'package:frontend/utils/utils.dart';
       主页上方展示
 */
 class CalendarCard extends StatelessWidget {
+
+  // 定时切换motto
+  String motto;
+  CalendarCard({this.motto});
+
   final Map<String, String> cardInfo = {
     'title': formatDate(),
     'time': weekdayInfo(),
@@ -31,8 +36,9 @@ class CalendarCard extends StatelessWidget {
               ),
               Divider(),
               Text(
+                motto, 
                 //"\"天行健，君子以自强不息\"",
-                "\"每一个不曾起舞的日子，都是对生命的辜负\"",
+                //"\"每一个不曾起舞的日子，都是对生命的辜负\"",
                 style: TextStyle(color: Colors.white,fontSize:14.0)
               )
             ],

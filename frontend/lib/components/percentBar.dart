@@ -8,7 +8,8 @@ import 'package:flutter_rounded_progress_bar/rounded_progress_bar_style.dart';
 class PercentBar extends StatelessWidget
 {
   int len, totalLen;
-  PercentBar({this.len, this.totalLen});
+  String title;
+  PercentBar({this.len, this.totalLen, this.title});
 
   @override
   Widget build(BuildContext context){
@@ -17,7 +18,7 @@ class PercentBar extends StatelessWidget
        Column(
          children: [
        // 展示文字内容
-       Container(padding:EdgeInsets.symmetric(horizontal:10.0, vertical:0),alignment: Alignment.topLeft ,child:  Text("打卡完成情况", style:TextStyle(color:Theme.of(context).primaryColor, fontWeight: FontWeight.w600,),),),
+       Container(padding:EdgeInsets.symmetric(horizontal:10.0, vertical:0),alignment: Alignment.topLeft ,child:  Text(title==null?"打卡完成情况":title, style:TextStyle(color:Theme.of(context).primaryColor, fontWeight: FontWeight.w600,),),),
        Container(
           padding: EdgeInsets.symmetric(vertical: 15.0,horizontal: 10.0),
           child: Row(

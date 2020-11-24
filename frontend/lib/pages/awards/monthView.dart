@@ -20,7 +20,6 @@ class MonthView extends StatefulWidget
 class _MonthView extends State<MonthView>
 {
   DateTime _currentDate = DateTime(2020,11,10);
-  DateTime _currentDate2 = DateTime(2020,11,20);
 
   EventList<Event> _markedDateMap = new EventList<Event>();
 
@@ -92,7 +91,7 @@ class _MonthView extends State<MonthView>
   Widget build(BuildContext context){
   return Container(
     margin: EdgeInsets.symmetric(horizontal:10.0, vertical:15.0),
-    child: mp==null||mp.length==0?
+    child: mp==null?
       Center(child:CircularProgressIndicator())
         :
       CalendarCarousel<Event>(

@@ -111,7 +111,11 @@ class _YearView extends State<YearView>
     });
     print(_show.length);
   }
- 
+
+  @override
+  void dispose(){
+    super.dispose();
+  }
 
  // 没有打卡记录返回空
   Widget nullView(){

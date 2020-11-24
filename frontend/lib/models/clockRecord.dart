@@ -8,6 +8,7 @@ class ClockRecord {
   String color;
   String cTime;
   int hasTodayTag;
+  int hasWeekTaskFinish;
 
   ClockRecord(
       {this.id,
@@ -18,11 +19,13 @@ class ClockRecord {
       this.icon,
       this.color,
       this.cTime,
-      this.hasTodayTag});
+      this.hasTodayTag,
+      this.hasWeekTaskFinish
+      });
 
   factory ClockRecord.fromJson(Map<String, dynamic> json) {
    return ClockRecord(  
-     id:json['id'],
+    id:json['id'],
     title:json['title'],
     startDate:json['startDate'],
     endDate:json['endDate'],
@@ -30,7 +33,9 @@ class ClockRecord {
     icon:json['icon'],
     color:json['color'],
     cTime:json['cTime'],
-    hasTodayTag:json['hasTodayTag']);
+    hasTodayTag:json['hasTodayTag'],
+    hasWeekTaskFinish: json['hasWeekTaskFinish']
+    );
   }
 
 }
