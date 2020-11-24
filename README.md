@@ -5,7 +5,7 @@
 ## 进度
  - [x] 11.9 打卡与主页原型设计完成
  - [x] 11.15 创建和完成打卡前后端联调完成
- - [x] 11.16 周视图与年视图demo
+ - [x] 11.23 周视图、月视图、年视图
 
 ## 功能
 * 设定打卡任务并完成，相应本地消息推送提醒、完成后勋章奖励
@@ -19,7 +19,7 @@
  -|-|-
  ![sh1](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG177.png)|![sh2](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG178.png)|![sh3](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG179.png)
 周视图 | 月视图 | 年视图
-![sh4](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG189.png) | TODO | ![sh6](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG194.png)
+![sh4](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG189.png) | ![sh5](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG219.png) | ![sh6](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG194.png)
 
 
 ## `lib`文件说明
