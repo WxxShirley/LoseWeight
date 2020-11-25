@@ -5,6 +5,7 @@ import 'package:frontend/utils/utils.dart';
     CalendarCard - 显示当日时间卡片 
       主页上方展示
 */
+// ignore: must_be_immutable
 class CalendarCard extends StatelessWidget {
 
   // 定时切换motto

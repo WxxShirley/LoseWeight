@@ -63,7 +63,7 @@ class _CreateTask extends State<CreateTask>
   double _freq=1;
   Color _colorTheme = Colors.limeAccent;
   String _showDate;
-  int _iconIndex;
+  int _iconIndex=0;
 
   // 表单控制
   TextEditingController _titleController = new TextEditingController();
@@ -228,6 +228,7 @@ class _CreateTask extends State<CreateTask>
               
               if(_titleController.text=="" || _freq.toInt()==0 || _iconTheme==null || _date.length!=2){
                 showToast(_fToast,Icons.error, "请检查表单");
+                return ;
               }
 
              

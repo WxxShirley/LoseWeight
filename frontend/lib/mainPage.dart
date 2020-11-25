@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/components/circleBedge.dart';
+import 'package:frontend/global/info.dart';
 import 'package:frontend/pages/awards/views.dart';
 import 'package:frontend/pages/record/recordPage.dart';
 import 'package:web_socket_channel/io.dart';
@@ -32,7 +33,12 @@ class _MainPage extends State<MainPage> with SingleTickerProviderStateMixin
     _bottomNavPages..add(Record())..add(AllViewScreen(controller: _tabController,))..add(Text("消息"))..add(Text("个人中心"));
 
     //开启完成本周打卡任务的socket监听
-    var channel = IOWebSocketChannel.connect("ws://127.0.0.1:8000/ws/message/18933928018/");
+    listen();
+    
+  }
+
+  listen(){
+    var channel = IOWebSocketChannel.connect("ws://127.0.0.1:8000/ws/message/"+userMobile+"/");
     channel.sink.add(jsonEncode({"message":"hello world"}));
     channel.stream.listen((event) async{
        print(event);
@@ -74,6 +80,7 @@ class _MainPage extends State<MainPage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
+        leading: Icon(Icons.settings),
         title:Text("轻记"),
         bottom: _selectedIndex==1? new TabBar(isScrollable: true,
            unselectedLabelColor: Colors.grey,

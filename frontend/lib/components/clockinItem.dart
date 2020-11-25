@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -44,6 +43,7 @@ class ClockinItem extends StatelessWidget
        controller: _detailController,
        initialValue: null,
        decoration: InputDecoration(labelText: "记下想说的话吧.."),
+       // ignore: missing_return
        validator: (String value){
          if(value.isEmpty)
            return "说点什么吧～";
@@ -212,9 +212,11 @@ class _ClockIns extends State<ClockIns>
   // 用户创建了新的打卡任务时回调
   onCreatedNew(ClockRecord newRecord){
     list.add(newRecord);
-    setState(() {
+    print("new Record:"+newRecord.title);
+    /*setState(() {
       list = list;
-    });
+    });*/
+    split();
   }
 
   // 用户完成今日打卡回调
@@ -245,6 +247,7 @@ class _ClockIns extends State<ClockIns>
     for(int i=0;i<_notFinishWeekList.length;i++){
       if(_notFinishWeekList[i].title==title){
         _notFinishWeekList.removeAt(i);
+        print("found and delete");
         setState(() {
           _notFinishWeekList = _notFinishWeekList;
         });
@@ -266,8 +269,12 @@ class _ClockIns extends State<ClockIns>
   // 初始化
   void initState(){
     super.initState();
-    
-    for(int i=0;i<list.length;i++){
+    split();
+  }
+
+  split(){
+     for(int i=0;i<list.length;i++){
+       print(i.toString()+","+list[i].title);
       if(list[i].hasWeekTaskFinish==1){
         _finishWeekList.add(list[i]);
       }else{
@@ -287,7 +294,7 @@ class _ClockIns extends State<ClockIns>
     return Container(
        child: Column(children: [
          for(int i=0;i<_notFinishWeekList.length;i++)
-            ClockinItem(item: _notFinishWeekList[i], index:i, onFinish: onFinish,),
+            ClockinItem(item: _notFinishWeekList[i], index:i, onFinish: onFinish,onDelete: onDelete,),
          EmptyClockinItem(onCreate: onCreatedNew,),
          
          _finishWeekList.length>0?

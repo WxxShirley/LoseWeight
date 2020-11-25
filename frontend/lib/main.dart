@@ -2,17 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:frontend/global/info.dart';
 import 'package:frontend/mainPage.dart';
-//import 'package:web_socket_channel/io.dart';
+import 'package:frontend/pages/personal/login.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-
-  /* var channel = IOWebSocketChannel.connect("ws://localhost:8000/ws/chat/");
-  channel.sink.add(jsonEncode({"message":"hello world"}));
-  channel.stream.listen((event) {
-    print("message");
-  });*/
-
   runApp(MyApp());
 }
 
@@ -35,9 +31,59 @@ class MyApp extends StatelessWidget {
         unselectedWidgetColor: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainPage(),
+      home: StartApp(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
+
+// 根据token是否在有效期判断是登陆 / 直接进入用户主页
+class StartApp extends StatefulWidget 
+{
+   @override
+  _StartApp createState() => _StartApp();
+}
+
+class _StartApp extends State<StartApp>
+{
+  bool loginValid;
+
+  @override 
+  void initState(){
+    super.initState();
+    
+    check();
+  }
+
+  check() async{
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    bool tmp = false;
+    String token = _prefs.getString("token");
+    if(token!=null){
+      if(JwtDecoder.isExpired(token)==false){
+        tmp=true;
+        myToken = "token " + token;
+        
+        Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
+        userMobile = decodedToken["data"]["mobile"].toString();
+      }
+    }
+    print("登陆是否有效:"+tmp.toString());
+    setState((){
+      loginValid = tmp;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context){
+    return //LoginPage();
+      loginValid==null?
+        Center(child:CircularProgressIndicator())
+        :
+        (loginValid==true?
+           MainPage():LoginPage()
+        );
+      
+  }
+}

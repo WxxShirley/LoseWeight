@@ -125,7 +125,7 @@ class _Record extends State<Record>  with TickerProviderStateMixin
          CalendarCard(motto: motto,),
          Container(height:20.0),
          Diet(),
-         _clocks ==null?  Center( child:CircularProgressIndicator(strokeWidth: 4,)) : ClockIns(list: _clocks),
+         _clocks ==null?  Center( child:CircularProgressIndicator(strokeWidth: 4,)) : ClockIns(list: _clocks,),
          
     ])
    );
