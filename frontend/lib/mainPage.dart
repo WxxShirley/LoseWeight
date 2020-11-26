@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/components/circleBedge.dart';
 import 'package:frontend/global/info.dart';
 import 'package:frontend/pages/awards/views.dart';
+import 'package:frontend/pages/personal/personalPage.dart';
 import 'package:frontend/pages/record/recordPage.dart';
 import 'package:web_socket_channel/io.dart';
 
@@ -30,7 +31,7 @@ class _MainPage extends State<MainPage> with SingleTickerProviderStateMixin
   void initState(){
     super.initState();
     _tabController = new  TabController(vsync: this, length: 3);
-    _bottomNavPages..add(Record())..add(AllViewScreen(controller: _tabController,))..add(Text("消息"))..add(Text("个人中心"));
+    _bottomNavPages..add(Record())..add(AllViewScreen(controller: _tabController,))..add(Text("消息"))..add(PersonalPage());
 
     //开启完成本周打卡任务的socket监听
     listen();

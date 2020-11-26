@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 class Meal
 {
-  final Uint8List fileName;
+  final String fileName;
   final String timestamp;
   final String type;
   

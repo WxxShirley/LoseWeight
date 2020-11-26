@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:frontend/global/info.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 String formatDate (){
   var date = DateTime.now();
@@ -53,4 +55,18 @@ class HexColor extends Color {
   }
 
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+}
+
+
+Future<void> reset() async{
+  userMobile = "";
+  myToken = "";
+  SharedPreferences _prefs =  await SharedPreferences.getInstance();
+  _prefs.setString("token", null);
+}
+
+
+String key()
+{
+  return DateTime.now().toString().substring(0,10)+userMobile;
 }
