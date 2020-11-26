@@ -28,6 +28,13 @@ String weekdayInfo(){
   return weekdayList[DateTime.now().weekday];
 }
 
+String fetchWeekDay(DateTime time)
+{
+  List weekdayList = ['','周一','周二','周三','周四','周五','周六','周末'];
+
+  return weekdayList[time.weekday];
+}
+
 
 // 色彩提取 遍历找到第一个出现0x...的
 String encodeColor(String color){

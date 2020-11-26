@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/pages/personal/personalFunc/recentMeal.dart';
 
 class MainMenu extends StatelessWidget
 {
@@ -12,7 +13,10 @@ class MainMenu extends StatelessWidget
       child: new ListView(
         padding: const EdgeInsets.only(left:5.0),
         children: [
-          _buildListItem("最近饮食", Icons.restaurant, (){}),
+          _buildListItem("最近饮食", Icons.restaurant,
+          (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> new RecentMealPage()));
+          }),
          // _buildListItem("体重报告", Icons.line_weight, (){}),
           _buildListItem("我的发布", Icons.camera, (){}),
           _buildListItem("我的收藏", Icons.favorite, (){}),
