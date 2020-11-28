@@ -21,8 +21,8 @@
  ![sh1](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2231606217806_.pic_hd.jpg)|![sh2](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2211606217791_.pic_hd.jpg)|![sh3](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG179.png) | ![sh4](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2251606217922_.pic_hd.jpg)
 周视图 | 月视图 | 年视图 | 单个打卡记录视图
 ![sh5](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2261606217939_.pic_hd.jpg) | ![sh6](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG219.png) | ![sh7](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2271606217951_.pic.jpg) | ![sh8](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/2241606217898_.pic_hd.jpg)
-饮食记录1 | 饮食记录2 | 个人中心1 | 个人中心2
-![sh9](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG237.png) | ![sh10](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG236.png) | ![sh11](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG235.png) | ![sh12](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG238.png)
+饮食记录 | 个人中心 | 浏览动态 | 发布动态
+![sh9](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG237.png) | ![sh10](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG235.png) | ![sh11](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG244.png) | ![sh12](https://github.com/WxxShirley/LoseWeight/blob/master/README.assets/WechatIMG242.png)
  
 ## `lib`文件说明
 ```
