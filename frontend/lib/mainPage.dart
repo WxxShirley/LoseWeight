@@ -6,6 +6,7 @@ import 'package:frontend/components/circleBedge.dart';
 import 'package:frontend/global/info.dart';
 import 'package:frontend/pages/awards/views.dart';
 import 'package:frontend/pages/dynamic/dynamicMain.dart';
+import 'package:frontend/pages/dynamic/publish.dart';
 import 'package:frontend/pages/personal/personalPage.dart';
 import 'package:frontend/pages/record/recordPage.dart';
 import 'package:web_socket_channel/io.dart';
@@ -83,6 +84,15 @@ class _MainPage extends State<MainPage> with SingleTickerProviderStateMixin
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.settings),
+        actions: _selectedIndex==2?
+         [
+           IconButton(icon: Icon(Icons.add), onPressed: (){
+             Navigator.push(context, MaterialPageRoute(builder: (context)=>new PublishPage()));
+           },)
+         ]:
+         [
+         ]
+        ,
         title:Text("轻记"),
         bottom: _selectedIndex==1? new TabBar(isScrollable: true,
            unselectedLabelColor: Colors.grey,

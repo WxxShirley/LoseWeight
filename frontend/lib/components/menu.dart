@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/pages/personal/personalFunc/myDynamic.dart';
 import 'package:frontend/pages/personal/personalFunc/recentMeal.dart';
 
 class MainMenu extends StatelessWidget
@@ -18,7 +19,11 @@ class MainMenu extends StatelessWidget
             Navigator.push(context, MaterialPageRoute(builder: (context)=> new RecentMealPage()));
           }),
          // _buildListItem("体重报告", Icons.line_weight, (){}),
-          _buildListItem("我的发布", Icons.camera, (){}),
+          _buildListItem("我的发布", Icons.camera, 
+          (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>new MyDynamics()));
+          })
+          ,
           _buildListItem("我的收藏", Icons.favorite, (){}),
           _buildListItem("我的成就", Icons.military_tech, (){}),
         ],

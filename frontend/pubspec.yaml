@@ -34,6 +34,7 @@ dependencies:
   json_serializable: ^3.5.0
   calendar_strip: ^1.0.6
   flutter_rounded_progress_bar: ^0.1.1
+  nine_grid_view: ^1.0.5
   flutter_calendar_week:
     git:
       url: https://github.com/mduccc/flutter_calendar_week

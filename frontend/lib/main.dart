@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:frontend/global/info.dart';
 import 'package:frontend/mainPage.dart';
-import 'package:frontend/pages/dynamic/publish.dart';
 import 'package:frontend/pages/personal/login.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
