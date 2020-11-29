@@ -139,7 +139,7 @@ class _PublishPage extends State<PublishPage>
    {
       return Container(
         margin: EdgeInsets.only(left:5.0, right:5.0, top:10.0,bottom: 10.0),
-        child: Image.file(img, width: 100, height: 100, fit:BoxFit.fill),
+        child: Image.file(img, width: 100, height: 100, fit:BoxFit.contain),
         width: 100,
         height: 100,
       );

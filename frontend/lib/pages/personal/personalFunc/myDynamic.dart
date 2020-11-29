@@ -53,6 +53,7 @@ class _MyDynamics extends State<MyDynamics>
       isLoading = false;
       shows = shows;
     });
+     showToast(_fToast, Icons.star, "右滑可以删除哦");
   }
 
   delete(int index) async{
@@ -91,6 +92,21 @@ class _MyDynamics extends State<MyDynamics>
          isLoading==true?
            Center(child:CircularProgressIndicator())
            :
+         
+         shows.length==0?
+     (
+       Container(alignment: Alignment.center,
+            child: Column(
+            children: [
+              Container(height: 80.0,),
+              Image.asset("assets/images/non.png"),
+              Container(height: 20.0,),
+              Text("暂时没有发布任何动态哦")
+            ],
+           ),
+          )
+     )
+      :
            ListView.builder(
          itemCount: shows.length,
          itemBuilder:(context, index){ 

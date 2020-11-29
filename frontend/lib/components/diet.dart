@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
-//import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:frontend/global/host.dart';
 import 'package:frontend/global/info.dart';
@@ -11,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:frontend/models/meal.dart';
 import 'package:frontend/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:image_crop/image_crop.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /*
@@ -22,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 */
 
 
+// ignore: must_be_immutable
 class ShowMeal extends StatelessWidget
 {
   Meal meal;
@@ -57,7 +55,7 @@ class ShowMeal extends StatelessWidget
           image: CachedNetworkImageProvider(
             myHost +  "/meal/show?path="+meal.fileName 
           ),
-          fit: BoxFit.fill,),
+          fit: BoxFit.contain,),
       ),
     );
   }
