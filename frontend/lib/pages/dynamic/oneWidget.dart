@@ -78,7 +78,7 @@ class _OneWidget extends State<OneWidget>
                  ExpandableText(text:dy.txtContent, maxLines: 2, ),
                 
                  // 宫格显示图片
-                 //NineGrid(paths: dy.paths),
+                  NineGrid(paths: dy.paths),
                  
                  // 时间戳
                  Text(dy.timestamp.toLocal().toString().substring(0,19), style:TextStyle(color: Colors.black38)),

@@ -31,6 +31,11 @@ class _Record extends State<Record>  with TickerProviderStateMixin
   Timer _timer; 
   String motto=mottos[0]; // 每隔5min切换一次motto
 
+  // 按照待打卡任务是否已经完成本周任务进行区分
+  List<ClockRecord> _finishWeekList=new List<ClockRecord>();
+  List<ClockRecord> _notFinishWeekList=new List<ClockRecord>();
+  bool _show = true;
+
   RefreshController _refreshController = RefreshController(initialRefresh: false);
   
   @override
@@ -73,8 +78,7 @@ class _Record extends State<Record>  with TickerProviderStateMixin
       _clocks = _c;
       totalLen = _clocks.length;
     });
-    print(_clocks);
-    print(totalLen);
+    split();
   }
   
   // 下拉刷新
@@ -87,6 +91,90 @@ class _Record extends State<Record>  with TickerProviderStateMixin
   void _onLoading() async{
     await Future.delayed(Duration(microseconds: 1000));
     _refreshController.loadComplete();
+  }
+
+  // 用户创建了新的打卡任务时回调
+  onCreatedNew(ClockRecord newRecord){
+    _clocks.add(newRecord);
+    totalLen = _clocks.length;
+    print("new Record:"+newRecord.title);
+    split();
+  }
+
+
+  split(){
+     _finishWeekList=new List<ClockRecord>();
+      _notFinishWeekList=new List<ClockRecord>();
+     for(int i=0;i<_clocks.length;i++){
+      if(_clocks[i].hasWeekTaskFinish==1){
+        _finishWeekList.add(_clocks[i]);
+      }else{
+        _notFinishWeekList.add(_clocks[i]);
+      }
+    }
+
+    setState((){
+      _finishWeekList = _finishWeekList;
+      _notFinishWeekList = _notFinishWeekList;
+    });
+    
+  }
+
+  // 用户完成今日打卡回调
+  onFinish(String title){
+    for(int i=0;i<_notFinishWeekList.length;i++){
+      if(_notFinishWeekList[i].title==title){
+        _notFinishWeekList[i].hasTodayTag = 1;
+        setState(() {
+          _notFinishWeekList = _notFinishWeekList;
+        });
+        return ;
+      }
+    }
+    for(int i=0;i<_finishWeekList.length;i++){
+      if(_finishWeekList[i].title==title){
+        _finishWeekList[i].hasTodayTag = 1;
+        setState(() {
+          _finishWeekList = _finishWeekList;
+        });
+        return ;
+      }
+    }
+  }
+
+  onDelete(String title){
+    for(int i=0;i<_clocks.length;i++){
+      if(_clocks[i].title==title){
+        _clocks.removeAt(i);
+        break;
+      }
+    }
+
+    for(int i=0;i<_notFinishWeekList.length;i++){
+
+      if(_notFinishWeekList[i].title==title){
+        _notFinishWeekList.removeAt(i);
+        print("found and delete");
+        setState(() {
+          totalLen = _clocks.length;
+          _clocks = _clocks;
+          _notFinishWeekList = _notFinishWeekList;
+        });
+        return ;
+      }
+    }
+    for(int i=0;i<_finishWeekList.length;i++){
+      if(_finishWeekList[i].title==title){
+        _finishWeekList.removeAt(i);
+        setState(() {
+          totalLen = _clocks.length;
+          _clocks = _clocks;
+          _finishWeekList = _finishWeekList;
+        });
+        return ;
+      }
+    }
+
   }
   
 
@@ -125,9 +213,54 @@ class _Record extends State<Record>  with TickerProviderStateMixin
          CalendarCard(motto: motto,),
          Container(height:20.0),
          Diet(),
-         _clocks ==null?  Center( child:CircularProgressIndicator(strokeWidth: 4,)) : ClockIns(list: _clocks,),
+         _clocks ==null?  Center( child:CircularProgressIndicator(strokeWidth: 4,)) : 
+        // ClockIns(list: _clocks,),
+        
+        Container(
+       child: Column(children: [
+         for(int i=0;i<_notFinishWeekList.length;i++)
+            ClockinItem(item: _notFinishWeekList[i], index:i, onFinish: onFinish,onDelete: onDelete,),
+         EmptyClockinItem(onCreate: onCreatedNew,),
+         
+         _finishWeekList.length>0?
+         Column(
+           children: [
+             GestureDetector(child:
+               Row(
+                 children: [
+                   Expanded(child: Divider(color: Theme.of(context).primaryColor),),
+                   Text(" 显示本周已完成的任务 ",style: TextStyle(color: Theme.of(context).primaryColor),),
+                   Expanded(child:Divider(color: Theme.of(context).primaryColor)),
+                 ],
+               ),
+               onTap:(){
+                 setState((){
+                   _show = !_show;
+                 });
+               }
+             ),
+             Offstage(
+               offstage: _show,
+               child: Column(children: [
+                 for(int i=0;i<_finishWeekList.length; i++)
+                    ClockinItem(item: _finishWeekList[i], index:i, onFinish: onFinish,onDelete: onDelete,),
+               ],)
+             )
+           ],
+         ):Container()
+
+       ],),
+     )
+
+
          
     ])
    );
   }
+
+  
+
+
+
+
 }

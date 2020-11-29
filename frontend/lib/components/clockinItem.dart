@@ -132,19 +132,46 @@ class ClockinItem extends StatelessWidget
            icon: Icons.delete,
            onTap:()async{
              print("delete");
-             Dio _dio = new Dio();
-             _dio.options.responseType = ResponseType.plain;
-             Response _res = await _dio.get(myHost+"/clockin/delete", queryParameters: {"mobile":userMobile,  "title":item.title}, options: Options(headers: {'Authorization':myToken}));
              
-              HttpRes _httpRes = HttpRes.fromJson(json.decode(_res.data.toString()));
-                if(_httpRes.status=='ok'){
-                    print("succ");
-                    showToast(_fToast,Icons.check, "删除成功");
-                    onDelete(item.title);//回调
-                }else{
-                    showToast(_fToast, Icons.error, "删除失败,请重试");
-                }
+             // 弹出对话框
+             showDialog(
+               context: context,
+               builder: (context){
+                 return AlertDialog(
+                   title: Text("提示"),
+                   content: Column(
+                     mainAxisSize: MainAxisSize.min,
+                     mainAxisAlignment: MainAxisAlignment.start,
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Text("确认删除这个打卡条目吗?"),
+                       Text("与该项目有关的记录和成就都将被删除", style:TextStyle(color: Colors.black45)),
 
+                     ],
+                   ),
+                   actions: [
+                      FlatButton(child: Text("取消"),onPressed: ()=>Navigator.of(context).pop(),),
+                      FlatButton(child: Text("确定"),
+                        onPressed: () async{
+                            Dio _dio = new Dio();
+                            _dio.options.responseType = ResponseType.plain;
+                            Response _res = await _dio.get(myHost+"/clockin/delete", queryParameters: {"mobile":userMobile,  "title":item.title}, options: Options(headers: {'Authorization':myToken}));
+             
+                            HttpRes _httpRes = HttpRes.fromJson(json.decode(_res.data.toString()));
+                            if(_httpRes.status=='ok'){
+                              print("succ");
+                              showToast(_fToast,Icons.check, "删除成功");
+                              onDelete(item.title);//回调
+                            }else{
+                              showToast(_fToast, Icons.error, "删除失败,请重试");
+                          }
+                          Navigator.pop(context);
+                        },
+                      )
+                   ],
+                 );
+               }
+             );
            }
          )
        ]
@@ -221,7 +248,6 @@ class _ClockIns extends State<ClockIns>
 
   // 用户完成今日打卡回调
   onFinish(String title){
-
     for(int i=0;i<_notFinishWeekList.length;i++){
       if(_notFinishWeekList[i].title==title){
         _notFinishWeekList[i].hasTodayTag = 1;
@@ -231,7 +257,6 @@ class _ClockIns extends State<ClockIns>
         return ;
       }
     }
-
     for(int i=0;i<_finishWeekList.length;i++){
       if(_finishWeekList[i].title==title){
         _finishWeekList[i].hasTodayTag = 1;
@@ -254,7 +279,6 @@ class _ClockIns extends State<ClockIns>
         return ;
       }
     }
-
     for(int i=0;i<_finishWeekList.length;i++){
       if(_finishWeekList[i].title==title){
         _finishWeekList.removeAt(i);
