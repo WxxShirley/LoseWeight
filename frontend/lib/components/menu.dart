@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/pages/personal/personalFunc/myAchieve.dart';
 import 'package:frontend/pages/personal/personalFunc/myDynamic.dart';
 import 'package:frontend/pages/personal/personalFunc/recentMeal.dart';
 
@@ -25,7 +26,9 @@ class MainMenu extends StatelessWidget
           })
           ,
           _buildListItem("我的收藏", Icons.favorite, (){}),
-          _buildListItem("我的成就", Icons.military_tech, (){}),
+          _buildListItem("我的成就", Icons.military_tech, (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>new MyAchievePage()));
+          }),
         ],
       )
     );

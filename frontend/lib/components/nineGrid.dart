@@ -18,29 +18,39 @@ class _OnePics extends State<OnePics>
   String path;
   double width;
   _OnePics({this.path, this.width});
+  CachedNetworkImage _img;
 
   @override
   void initState(){
     super.initState();
+    loadImg();
     setState((){
       path = path;
     });
   }
 
+  loadImg()async{
+    //_img = await ExtendedImage.network(myHost+"/dynamic/showpic/"+path, cache: false,);
+    _img = await CachedNetworkImage(
+          imageUrl: myHost+"/dynamic/showpic/"+path, width: width,height: width,fit:BoxFit.cover,
+          errorWidget: (context, str, dy){
+            return Center(child:Text("发生错误"));
+          },
+        );
+    setState((){
+      _img = _img;
+    });
+  }
+
 
    Widget build(BuildContext context){
-     return this.path==null||this.path.length==0?
+     return this.path==null||this.path.length==0 || _img==null?
       Container(height: width, width: width, 
         decoration: BoxDecoration(color:Colors.grey),
       ):
       Container(
         margin: EdgeInsets.only(left:5.0, right:5.0, top:10.0,bottom: 10.0,),
-        child: 
-         //Image.network(myHost+"/dynamic/showpic/"+path, width: width,height: width,fit:BoxFit.fill),
-        CachedNetworkImage(
-          imageUrl: myHost+"/dynamic/showpic/"+path, width: width,height: width,fit:BoxFit.fill
-        ),
-        
+        child: _img,
         width: width,
         height: width,
       );
