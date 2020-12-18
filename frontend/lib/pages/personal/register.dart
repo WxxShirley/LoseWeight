@@ -106,7 +106,7 @@ class _RegisterPage extends State<RegisterPage>
       // ignore: missing_return
       validator: (String value){
         //检查手机号是否为11位 - 正确的中国大陆手机号码
-        var mobileReg = RegExp(r"1[3456789]\d{9}$");
+        var mobileReg = RegExp(r"^1[3456789]\d{9}$");
         if(!mobileReg.hasMatch(value)){
           return '请输入正确的手机号码';
         }
@@ -121,7 +121,7 @@ class _RegisterPage extends State<RegisterPage>
       controller: _pwdController,
       obscureText: _isObscure,
       validator: (String value){
-        var pwdReg = RegExp(r"[0-9A-Za-z~!@#$%^&*\\_]{6,16}$");
+        var pwdReg = RegExp(r"^[0-9A-Za-z~!@#$%^&*\\_]{6,16}$");
         if(!pwdReg.hasMatch(value)){
           return '密码需要6-16位字母/数字/特殊字符组成，请检查!';
         }
@@ -163,6 +163,8 @@ class _RegisterPage extends State<RegisterPage>
         onPressed: ()async{
           if(_formKey.currentState.validate()){
             _formKey.currentState.save();
+          }else{
+            return ;
           }
 
           Dio _dio = new Dio();

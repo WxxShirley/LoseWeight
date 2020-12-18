@@ -60,6 +60,7 @@ class _StartApp extends State<StartApp>
   check() async{
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     bool tmp = false;
+   
     String token = _prefs.getString("token");
     if(token!=null){
       if(JwtDecoder.isExpired(token)==false){
