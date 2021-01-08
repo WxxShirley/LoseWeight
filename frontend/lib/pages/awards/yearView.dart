@@ -10,12 +10,9 @@ import 'package:heatmap_calendar/heatmap_calendar.dart';
 import 'package:heatmap_calendar/time_utils.dart';
 
 
-List<String> _weekDaysLabels = ['', '', '', '', '', '', '']; 
-List<String> _monthsLabels = ['', '','', '', '','','', '','','', '','',];
-
 
 // 年视图抽象模版
-
+// ignore: must_be_immutable
 class YearViewUtil extends StatelessWidget
 {
   Map<DateTime, int> times;
@@ -36,12 +33,13 @@ class YearViewUtil extends StatelessWidget
             Text(title, style:TextStyle(color:color,fontWeight: FontWeight.w800)),
             Text(times.length.toString()+"次",)]
          ),
+        
           HeatMapCalendar(
             input: times,
             colorThresholds: { 1: Theme.of(context).primaryColor},
-            weekDaysLabels: _weekDaysLabels,
-            monthsLabels: _monthsLabels,
-            squareSize: 6.0,
+            weekDaysLabels: [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+            monthsLabels: [""," ", " ", " ", " ", " ", " "," "," "," ", " "," ", " ",],
+            squareSize: 10.0,
             textOpacity: 0.3,
             labelTextColor: color,
             dayTextColor: color,
@@ -95,12 +93,16 @@ class _YearView extends State<YearView>
     print(mp2color);
 
     mps.forEach((key, value) { 
-
-      _show.add(new YearViewUtil(
+   
+      _show.add(
+       new YearViewUtil(
         times: Map.fromIterable(value, key: (e)=>TimeUtils.removeTime(e), value:(e)=>1),
         color: mp2color[key],
         title: key,
-      ));
+      )
+      
+      );
+
     });
 
     setState((){
